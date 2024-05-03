@@ -25,11 +25,15 @@ const userSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase('persist/REHYDRATE', (state, action) => {
-            return {
-                ...state,
-                ...action.payload.user,
-                loading: false,
-            };
+            if (action.payload && action.payload.user) {
+                return {
+                    ...state,
+                    ...action.payload.user,
+                    loading: false,
+                };
+            } else {
+                return initialState;
+            }
         });
     },
 });
