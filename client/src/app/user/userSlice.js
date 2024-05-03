@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     currentUser: null,
@@ -11,7 +11,7 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         signInStart: (state) => {
-            state.loading =true;
+            state.loading = true;
         },
         signInSuccess: (state, action) => {
             state.currentUser = action.payload;
@@ -22,9 +22,18 @@ const userSlice = createSlice({
             state.error = action.payload;
             state.loading = false;
         }
-    }
+    },
+    extraReducers: (builder) => {
+        builder.addCase('persist/REHYDRATE', (state, action) => {
+            return {
+                ...state,
+                ...action.payload.user,
+                loading: false,
+            };
+        });
+    },
 });
 
-export const {signInStart, signInSuccess, signInFailure} = userSlice.actions;
+export const { signInStart, signInSuccess, signInFailure } = userSlice.actions;
 
 export default userSlice.reducer;
