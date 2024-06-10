@@ -4,6 +4,7 @@ import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/
 import { app } from '../firebase';
 import { updateUserStart, updateUserSuccess, updateUserFailure, 
          deleteUserStart, deleteUserSuccess, deleteUserFailure, 
+         signOutUserStart,
          signOutUserFailure,
          signOutUserSuccess
 } from "../app/user/userSlice";
@@ -46,7 +47,7 @@ export default function Profile() {
   };
 
   const handleChange = (e) => {
-    setFormData({...FormData, [e.target.id]: e.target.value});
+    setFormData({...formData, [e.target.id]: e.target.value});
   };
   
 
@@ -140,8 +141,8 @@ export default function Profile() {
         <button disabled={loading} className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Loading...' : 'Update'}</button>
       </form>
       <div className='flex justify-between mt-5'>
-        <span className='text-red-700 curosr-pointer' onClick={handleDeleteUser}>Delete Account</span>
-        <span className='text-red-700 curosr-pointer' onClick={handleSignOut}>SignOut</span>
+        <span className='text-red-700 cursor-pointer hover:underline' onClick={handleDeleteUser}>Delete Account</span>
+        <span className='text-red-700 cursor-pointer hover:underline' onClick={handleSignOut}>SignOut</span>
       </div>
       <p className="text-red-700 mt-5 text-center">{error ? error : ''}</p>
       <p className="text-green-700 mt-5 text-center">{updateSuccess ? 'User is updated Successfully' : ''}</p>
