@@ -173,17 +173,17 @@ export default function CreateListing() {
                 <div className='flex flex-wrap gap-6'>
                     <div className='flex items-center gap-2'>
                         <input type="number" className='p-3 border border-gray-300 rounded-lg' id="bedrooms" min='1' max='10' 
-                            required onChange={handleChange} checked={formData.bedrooms} />
+                            required onChange={handleChange} value={formData.bedrooms} />
                         <p>Beds</p>
                     </div>
                     <div className='flex items-center gap-2'>
                         <input type="number" className='p-3 border border-gray-300 rounded-lg' id="bathrooms" min='1' max='10' 
-                            required onChange={handleChange} checked={formData.bathrooms} />
+                            required onChange={handleChange} value={formData.bathrooms} />
                         <p>Baths</p>
                     </div>
                     <div className='flex items-center gap-2'>
                         <input type="number" className='p-3 border border-gray-300 rounded-lg' id="regularPrice" min='5000' max='50000000' 
-                            required onChange={handleChange} checked={formData.regularPrice} />
+                            required onChange={handleChange} value={formData.regularPrice} />
                         <div className='flex flex-col items-center'>
                             <p>Regular Price</p>
                             <span className='text-xs'>(Rs. / month)</span>
@@ -192,7 +192,7 @@ export default function CreateListing() {
                     {formData.offer && (
                         <div className='flex items-center gap-2'>
                             <input type="number" className='p-3 border border-gray-300 rounded-lg' id="discountPrice" min='0' max='3500000' 
-                            required onChange={handleChange} checked={formData.discountPrice} />
+                            required onChange={handleChange} value={formData.discountPrice} />
                             <div className='flex flex-col items-center'>
                                 <p>Discounted Price</p>
                                 <span className='text-xs'>(Rs. / month)</span>
