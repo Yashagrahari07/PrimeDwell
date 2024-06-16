@@ -195,9 +195,8 @@ export default function CreateListing() {
                             required onChange={handleChange} value={formData.discountPrice} />
                             <div className='flex flex-col items-center'>
                                 <p>Discounted Price</p>
-                                <span className='text-xs'>(Rs. / month)</span>
                                 {formData.type === 'rent' && (
-                                    <span className='text-xs'>($ / month)</span>
+                                    <span className='text-xs'>(Rs. / month)</span>
                                 )}
                             </div>
                         </div>
